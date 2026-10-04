@@ -109,15 +109,15 @@ const App = () => {
           onComplete={() => setHasSetupFixedCosts(true)} addExpense={addExpense}
           budget={budget} setBudget={setBudget} />
       ) : (
-        <>
-          <BudgetDisplay key={month} budget={budget} setBudget={setBudget}
+        <React.Fragment key={month}>
+          <BudgetDisplay budget={budget} setBudget={setBudget}
             totalExpenses={totalExpenses} />
-          <ExpenseForm key={month} addExpense={addExpense} editExpenseData={editExpenseData}
+          <ExpenseForm addExpense={addExpense} editExpenseData={editExpenseData}
             updateExpense={updateExpense} clearEdit={() => setEditExpenseData(null)} />
           <ExpenseChart expenses={expenses} />
           <ExpenseList expenses={expenses} deleteExpense={deleteExpense}
             clearExpenses={clearExpenses} setEditExpenseData={setEditExpenseData} />
-        </>
+        </React.Fragment>
       )}
 
       <MonthlyHistory history={history} month={month} onSave={saveMonth}
