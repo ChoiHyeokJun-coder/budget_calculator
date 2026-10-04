@@ -55,6 +55,16 @@
    ```
    > 💡 실행 후 터미널에 나타나는 `http://localhost:5173/` 링크를 브라우저에서 열어 확인하세요.
 
+## GitHub Pages 배포
+
+1. 저장소의 **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 설정합니다.
+2. 변경 사항을 `master` 브랜치에 push하면 `.github/workflows/deploy.yml`이 `npm ci`, `npm run build`를 실행하고 `dist` 폴더를 배포합니다. Actions 탭에서 **Deploy to GitHub Pages → Run workflow**로 수동 실행할 수도 있습니다.
+3. 배포가 완료되면 https://choihyeokjun-coder.github.io/budget_calculator/ 에서 확인합니다.
+
+Vite의 `base`는 `/budget_calculator/`로 설정되어 있습니다. `index.html`의 `/src/main.jsx`는 개발용 진입점이며, 빌드할 때 컴파일된 JavaScript 경로로 바뀝니다. 저장소의 소스 파일을 직접 Pages에 배포하지 않고 `dist`를 배포해야 합니다.
+
+로컬에서 배포 결과를 확인하려면 `npm run build` 후 `npm run preview`를 실행하고 http://localhost:4173/budget_calculator/ 를 엽니다.
+
 ## 📂 프로젝트 폴더 구조
 - `src/components/`: 재사용 가능한 6개의 UI 컴포넌트 (`BudgetDisplay`, `ExpenseForm`, `ExpenseList`, `ExpenseItem`, `ExpenseChart`) 분리
 - `src/utils/`: 데이터 지속성을 보장하는 `localStorage.js` 유틸 함수 분리
