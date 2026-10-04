@@ -14,9 +14,11 @@ export const saveToLocalStorage = (key, value) => {
     // 배열이나 객체 형태의 데이터는 브라우저가 바로 이해하지 못하므로,
     // JSON.stringify()를 써서 '문자열' 형태로 변환한 뒤에 저장합니다.
     localStorage.setItem(key, JSON.stringify(value));
+    return true;
   } catch (error) {
     // 만약 저장 공간이 꽉 차는 등 에러가 나면 콘솔에 빨간색으로 경고를 띄웁니다.
     console.error(`Error saving to localStorage with key "${key}":`, error);
+    return false;
   }
 };
 
